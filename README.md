@@ -1,1 +1,1 @@
-https://sosuke-pi.github.io/zakrivayuschiy-teg-ad/
+https://github.com/sosuke-pi/zakrivayuschiy-teg-ad

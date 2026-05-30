@@ -1,16 +1,200 @@
-/* Здесь вы напишете основную часть стилей страницы.
+.header {
+  padding: var(--header-padding);
+}
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
+.header__logo {
+  font-family: var(--accent-font);
+  font-size: 1.2rem;
+  color: var(--accent-color);
+  text-transform: lowercase;
+  margin-block-end: 1rem;
+}
 
-*/
+.header__description {
+  margin-block-end: 2rem;
+  font-size: 0.9rem;
+}
 
-.page {
-  min-inline-size: 320px;
-  min-block-size: 100dvb;
+.header__title {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-weight: var(--title-weight);
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.cards {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: var(--card-gap);
+}
+
+.card {
+  border: 1px solid var(--contour-color);
+  background-color: var(--card-bg-color);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.card__label {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 10;
+  font-family: var(--accent-font);
+  font-size: 2rem;
+  text-transform: uppercase;
+  color: white;
+  
+  mix-blend-mode: hard-light;
+  opacity: 0.8;
+}
+
+@supports ((-webkit-text-stroke: 1px var(--text-stroke-color)) or (text-stroke: 1px var(--text-stroke-color))) {
+  .card__label {
+    -webkit-text-stroke: 1px var(--text-stroke-color);
+    text-stroke: 1px var(--text-stroke-color);
+    color: transparent;
+  }
+}
+@supports not ((-webkit-text-stroke: 1px var(--text-stroke-color)) or (text-stroke: 1px var(--text-stroke-color))) {
+  .card__label {
+    text-shadow: 1px 1px 0 var(--text-stroke-color), -1px -1px 0 var(--text-stroke-color);
+  }
+}
+
+.card__image-container {
+  width: 100%;
+  aspect-ratio: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.card__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.card__content {
+  padding: 2rem;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card__section-title {
+  font-size: 1.2rem;
+  font-weight: var(--title-weight);
+  margin-block-end: 1rem;
+}
+
+.card__text {
+  color: var(--secondary-text-color);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.card__text p:not(:last-child) {
+  margin-block-end: 1em;
+}
+
+.card__actions {
+  margin-top: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+  border-block-start: 1px solid var(--contour-color);
+}
+
+.card__like-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--contour-color);
+  background: none;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s ease-in-out;
+}
+
+.like-icon {
+  width: 20px;
+  height: 20px;
+  fill: var(--accent-color);
+  transition: 0.3s ease-in-out;
+}
+
+.card__save-button {
+  background: none;
+  border: 1px solid var(--contour-color);
+  color: var(--accent-color);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+dialog {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  border: 1px solid var(--contour-color);
+  width: 40%;
+}
+
+@media (width <= 768px) {
+  dialog {
+    width: 90%;
+  }
+}
+
+dialog[open] {
+  display: flex;
+}
+
+.dialog__content {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 1rem;
+}
+
+.save-icon {
+  width: 40px;
+  height: 40px;
+  fill: var(--accent-color);
+}
+
+.dialog__button {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--contour-color);
+  background: none;
+  cursor: pointer;
+}
+
+dialog::backdrop {
+  backdrop-filter: blur(5px);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.footer {
+  padding: 2rem;
+  text-align: center;
+}
+
+.footer__save-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0 auto;
+  padding: 0.8rem 1.5rem;
+  border: 1px solid var(--contour-color);
+  background-color: var(--bg-color);
+  color: var(--accent-color);
+  cursor: pointer;
 }
